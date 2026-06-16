@@ -2,6 +2,19 @@
 
 echo "===== Cloud Shell Init Start ====="
 
+
+# confirm shell type
+if [ -n "$BASH_VERSION" ]; then
+  SHELL_TYPE="bash"
+elif [ -n "$PSVersionTable" ]; then
+  SHELL_TYPE="powershell"
+else
+  SHELL_TYPE="unknown"
+fi
+
+echo "[INFO] Detected shell: $SHELL_TYPE"
+
+
 # Get the current logged-in account
 USER=$(az account show --query "user.name" -o tsv)
 
@@ -10,7 +23,7 @@ echo "[INFO] Current user: $USER"
 # ===== mapping relationship =====
 case $USER in
   "LabRunnerPPE1@MngEnvMCAP825705.onmicrosoft.com")
-    SUB_ID="LabRunnerPPE1@MngEnvMCAP825705.onmicrosoft.com"
+    SUB_ID="e90f488d-02c7-4c79-a332-523afd8d1a44"
     ;;
   
   "wenjun@MngEnvMCAP825705.onmicrosoft.com")
@@ -23,12 +36,22 @@ case $USER in
     ;;
 esac
 
-# ===== switch subscription =====
-echo "[INFO] Switching subscription..."
-az account set --subscription $SUB_ID > /dev/null 2>&1
 
-# ===== output result =====
-echo "[INFO] Current subscription:"
-az account show --query name -o tsv
+# Execute different logics based on the shell
+if [ "$SHELL_TYPE" == "bash" ]; then
+  az account set --subscription $SUB_ID > /dev/null 2>&1
+  az account show --query name -o tsv
+elif [ "$SHELL_TYPE" == "powershell" ]; then
+  pwsh -Command "
+    Set-AzContext -SubscriptionId '$SUB_ID' | Out-Null
+  "
+  Get-AzContext
+  az account set --subscription $SUB_ID > /dev/null 2>&1
+  az account show --query name -o tsv
+else
+  echo "[ERROR] Unknown shell type"
+  exit 1
+fi
+
 
 echo "===== Init Done ====="

@@ -10,12 +10,52 @@ Write-Host "[INFO] Current user: $user"
 
 # ===== mapping relationship =====
 switch ($user) {
+    "LabRunner1@MngEnvMCAP825705.onmicrosoft.com" {
+        $subId = "8da443ca-8590-4e4c-bc26-defea6467f50"
+    }
+    "LabRunner2@MngEnvMCAP825705.onmicrosoft.com" {
+        $subId = "8da443ca-8590-4e4c-bc26-defea6467f50"
+    }
+    "LabRunner3@MngEnvMCAP825705.onmicrosoft.com" {
+        $subId = "8da443ca-8590-4e4c-bc26-defea6467f50"
+    }
+    "LabRunner4@MngEnvMCAP825705.onmicrosoft.com" {
+        $subId = "8da443ca-8590-4e4c-bc26-defea6467f50"
+    }
+    "LabRunner5@MngEnvMCAP825705.onmicrosoft.com" {
+        $subId = "8da443ca-8590-4e4c-bc26-defea6467f50"
+    }
+    "LabRunner6@MngEnvMCAP825705.onmicrosoft.com" {
+        $subId = "8da443ca-8590-4e4c-bc26-defea6467f50"
+    }
+
+
     "LabRunnerPPE1@MngEnvMCAP825705.onmicrosoft.com" {
         $subId = "e90f488d-02c7-4c79-a332-523afd8d1a44"
     }
-    "wenjun@MngEnvMCAP825705.onmicrosoft.com" {
-        $subId = "d470c937-42bc-4a9c-9831-116799e343d9"
+    "LabRunnerPPE2@MngEnvMCAP825705.onmicrosoft.com" {
+        $subId = "e90f488d-02c7-4c79-a332-523afd8d1a44"
     }
+    "LabRunnerPPE3@MngEnvMCAP825705.onmicrosoft.com" {
+        $subId = "e90f488d-02c7-4c79-a332-523afd8d1a44"
+    }
+    "LabRunnerPPE4@MngEnvMCAP825705.onmicrosoft.com" {
+        $subId = "e90f488d-02c7-4c79-a332-523afd8d1a44"
+    }
+
+    "LabRunnerDevPPE1@MngEnvMCAP825705.onmicrosoft.com" {
+        $subId = "d470c937-42bc-4a9c-9831-116799e343d9"
+    } 
+    "LabRunnerDevPPE2@MngEnvMCAP825705.onmicrosoft.com" {
+        $subId = "d470c937-42bc-4a9c-9831-116799e343d9"
+    }  
+    "LabRunnerDevPPE3@MngEnvMCAP825705.onmicrosoft.com" {
+        $subId = "d470c937-42bc-4a9c-9831-116799e343d9"
+    }  
+    "LabRunnerDevPPE4@MngEnvMCAP825705.onmicrosoft.com" {
+        $subId = "d470c937-42bc-4a9c-9831-116799e343d9"
+    }     
+    
     default {
         Write-Error "[ERROR] Unknown account: $user"
         return

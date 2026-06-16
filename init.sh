@@ -11,15 +11,15 @@ echo "[INFO] Current user: $USER"
 
 # ===== mapping relationship =====
 case $USER in
-  "LabRunnerPPE1@MngEnvMCAP825705.onmicrosoft.com")
+  "LabRunnerPPE1@MngEnvMCAP825705.onmicrosoft.com"
     SUB_ID="e90f488d-02c7-4c79-a332-523afd8d1a44"
     ;;
 
-  "wenjun@MngEnvMCAP825705.onmicrosoft.com")
+  "wenjun@MngEnvMCAP825705.onmicrosoft.com"
     SUB_ID="d470c937-42bc-4a9c-9831-116799e343d9"
     ;;
 
-  *)
+  *
     echo "[ERROR] Unknown account: $USER"
     exit 1
     ;;

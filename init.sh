@@ -4,12 +4,10 @@ echo "===== Cloud Shell Init Start ====="
 
 
 # confirm shell type
-if [ -n "$BASH_VERSION" ]; then
-  SHELL_TYPE="bash"
-elif [ -n "$PSVersionTable" ]; then
+if [ -n "$PSVersionTable" ]; then
   SHELL_TYPE="powershell"
 else
-  SHELL_TYPE="unknown"
+  SHELL_TYPE="bash"
 fi
 
 echo "[INFO] Detected shell: $SHELL_TYPE"
@@ -42,10 +40,7 @@ if [ "$SHELL_TYPE" == "bash" ]; then
   az account set --subscription $SUB_ID > /dev/null 2>&1
   az account show --query name -o tsv
 elif [ "$SHELL_TYPE" == "powershell" ]; then
-  pwsh -Command "
-    Set-AzContext -SubscriptionId '$SUB_ID' | Out-Null
-  "
-  Get-AzContext
+  Set-AzContext -SubscriptionId '$SUB_ID'
   az account set --subscription $SUB_ID > /dev/null 2>&1
   az account show --query name -o tsv
 else

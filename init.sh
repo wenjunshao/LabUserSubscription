@@ -4,10 +4,10 @@ echo "===== Cloud Shell Init Start ====="
 
 
 # confirm shell type
-if [ -n "$PSVersionTable" ]; then
-  SHELL_TYPE="powershell"
-else
-  SHELL_TYPE="bash"
+if [ -n "$BASH_VERSION" ]; then
+    SHELL_TYPE=Bash
+elif [ -n "$PSVersionTable" ] || [ -n "$PSModulePath" ]; then
+    SHELL_TYPE=PowerShell
 fi
 
 echo "[INFO] Detected shell: $SHELL_TYPE"

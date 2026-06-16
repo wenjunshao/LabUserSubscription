@@ -40,7 +40,8 @@ if [ "$SHELL_TYPE" == "bash" ]; then
   az account set --subscription $SUB_ID > /dev/null 2>&1
   az account show --query name -o tsv
 elif [ "$SHELL_TYPE" == "powershell" ]; then
-  Set-AzContext -SubscriptionId '$SUB_ID'
+  pwsh -Command "Set-AzContext -SubscriptionId '$SUB_ID' | Out-Null"
+  
   az account set --subscription $SUB_ID > /dev/null 2>&1
   az account show --query name -o tsv
 else
